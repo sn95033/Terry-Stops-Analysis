@@ -2,22 +2,13 @@
 
 * Student name: Rebecca Mih
 * Student pace: Part Time Online
-* Scheduled project review date/time: 
+* Scheduled project review date/time: May 5, 2020 12:00 pm
 * Instructor name: James Irving
-* Blog post URL: 
+* Blog post URL: https://github.com/sn95033/Terry-Stops-Analysis
 
 
 * **Data Source:**  https://www.kaggle.com/city-of-seattle/seattle-terry-stops
-
     * Date of last update to the datasource: April 15, 2020
-
-
-* **Key references:**
-* https://assets.documentcloud.org/documents/6136893/SPDs-2019-Annual-Report-on-Stops-and-Detentions.pdf <br><br>
-
-* https://www.seattletimes.com/seattle-news/crime/federal-monitor-finds-seattle-police-are-conducting-proper-stops-and-frisks/ <br> <br>
-* https://catboost.ai/docs/concepts/python-reference_catboost_grid_search.html<br><br>
-* https://towardsdatascience.com/catboost-vs-light-gbm-vs-xgboost-5f93620723db
 
 <div>
 <img src= "Seattle Police Dept.jpg"
@@ -56,29 +47,51 @@ Open carry of a firearm is lawful without a permit in the state of Washington ex
 The criminal charge of “carrying a concealed firearm” happens in this state when someone carries a concealed firearm **without a concealed pistol license**. It does not matter if the weapon was discovered in the defendant’s home, vehicle, or on his or her person.
 
 ## Objectives
-### Target:
 
-   * Identify Terry Stops which lead to Arrest or Prosecution (Binary Classification)
+   * Build a classifier which predicts Terry Stops that lead to Arrest (Binary Classification), given information about the presence of weapons, the time of day of the call, etc.  
     
 ### Features:
-   * Location (Precinct)
-   * Day of the Week (Date)
-   * Shift (Time)
+   * Report Date
+   * Report time
    * Initial Call Type
    * Final Call Type
    * Stop Resolution
    * Weapon type
    * Officer Squad
-   * Age of officer
-   * Age of detainee
-    
-    
-### Optional Features:
+   * Officer Year of Birth
+   * Perceived Age of subject
    * Race of officer
-   * Race of detainee
+   * Perceived Race of subject
    * Gender of officer
-   * Gender of detainee
+   * Perceived Gender of subject
+   
+### Engineered Features:
+    * Day of the week
+    * Monthly cadence
+    * Precinct
+    * Watch 
+    * Officer Age
     
+### Experiments:
+ * **The Next Steps will be a set of experiments to look how the models can improve based on:**
+    - [1] Feature Selection:  Initial Call Type Versus Final Call Type 
+    - [2] Model type:  XGBoost-RF  vs CatBoost
+    - [3] Balancing the dataset from best model of [1] and [2] using either SMOTE or SMOTENC
+    - [4] 1 Hote Encoding + Above [3] . Note items 1-4 and encoded with cat.codes,  not 1-hot encoded. <br><br>
+    
+* **The Next Experiment will be (Bold Type):**
+
+    - A = Vanilla Model = XBG + Initial Call Type
+    - B = XBG + Final Call Type
+    - C = Catboost + Initial Call Type
+    - D = Catboost + Final Call Type
+    - E = SMOTE + Catboost + Final Call Type
+    - F = SMOTE + XGB + Final Call Type
+    - G = SMOTE + SVM + Final Call Type
+    - H = SMOTENC + Catboost + Final Call Type
+    - I = 1-hot + CBC-search + Final Call Type
+    - J = SMOTENC + 1-hot + CBC-search + Final Call Type
+
    
 
 ## Definition of Features Provided
@@ -206,3 +219,10 @@ Beat of the address associated with the underlying Computer Aided Dispatch (CAD)
 8. **Write the Report**
     - [X] Explain key findings and recommended next steps
 
+
+
+* **Key references:**
+* https://assets.documentcloud.org/documents/6136893/SPDs-2019-Annual-Report-on-Stops-and-Detentions.pdf <br><br>
+* https://www.seattletimes.com/seattle-news/crime/federal-monitor-finds-seattle-police-are-conducting-proper-stops-and-frisks/ <br> <br>
+* https://catboost.ai/docs/concepts/python-reference_catboost_grid_search.html<br><br>
+* https://towardsdatascience.com/catboost-vs-light-gbm-vs-xgboost-5f93620723db
